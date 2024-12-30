@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <style>
+        
+        body {
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+           
+        }
+
+        header {
+            background-color: #4682b4;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            padding: 2rem;
+            text-align: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        img {
+            height: 250px;
+            width: 250px;
+            display: block;
+            margin: 1rem 0;
+            align-items: center;
+        }
+
+        a {
+            color: #4682b4;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            background-color: #4682b4;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: #5a9bd4;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Task 1</h1>
+    </header>
+    <main>
+        <h2>About  Page</h2>
+        <p>This is a simple webpage created to basic HTML, CSS, and JavaScript.</p>
+        <h2>Features</h2>
+        <p>image and a link</p>
+        <center>
+            <img src="image.JPG" alt="Placeholder Image">
+        </center>
+        <p>Check out <a href="http://daya2550.rf.gd" target="_blank"> my portfolio</a></p>
+        <p>Click the button below to see alart massage </p>
+
+        <button onclick="Alert()">Click for alart</button>
+    </main>
+
+    <script>
+        function Alert() {
+            alert(' You just clicked the button by using the javascript');
+        }
+    </script>
+</body>
+</html>
