@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .form-container, .dynamic-container {
+            flex: 1 1 100%;
+            background: #f9f9f9;
+            padding: 20px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Task 2</h1>
+        <nav>
+            <a href="#form">Contact Form</a>
+            <a href="#dynamic">To-Do List</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form-container" id="form">
+            <h2>Contact Form</h2>
+            <form id="contactForm">
+                <input id="name" type="text" placeholder="Name" required>
+                <input id="email" type="email" placeholder="Email" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="dynamic-container" id="dynamic">
+            <h2>To-Do List</h2>
+            <input id="taskInput" type="text" placeholder="Add a task">
+            <button id="addTask">Add Task</button>
+            <ul id="taskList"></ul>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').onsubmit = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            if (!name || !email) {
+                alert('All fields are required!');
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('Invalid email address.');
+                return;
+            }
+            alert('Form submitted successfully!');
+        };
+
+        document.getElementById('addTask').onclick = function() {
+            const taskInput = document.getElementById('taskInput');
+            const taskValue = taskInput.value.trim();
+            if (!taskValue) {
+                alert('Please enter a task.');
+                return;
+            }
+            const taskList = document.getElementById('taskList');
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `${taskValue} <button onclick="this.parentElement.remove()">Remove</button>`;
+            taskList.appendChild(listItem);
+            taskInput.value = '';
+        };
+    </script>
+</body>
+</html>
