@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing</title>
+    <style>
+        .product {
+            margin: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Listing</h1>
+    <label for="filter">Category:</label>
+    <select id="filter">
+        <option value="all">All</option>
+        <option value="electronics">Electronics</option>
+        <option value="clothing">Clothing</option>
+    </select>
+    <label for="sort">Sort By:</label>
+    <select id="sort">
+        <option value="name">Name</option>
+        <option value="price">Price</option>
+    </select>
+    <div id="productContainer">
+        <div class="product" data-category="electronics" data-price="500">
+            <h3>Smartphone</h3>
+            <p>Price: $500</p>
+        </div>
+        <div class="product" data-category="clothing" data-price="50">
+            <h3>T-shirt</h3>
+            <p>Price: $50</p>
+        </div>
+    </div>
+
+    <script>
+        const filterSelect = document.getElementById('filter');
+        const sortSelect = document.getElementById('sort');
+        const productContainer = document.getElementById('productContainer');
+
+        function filterProducts() {
+            const category = filterSelect.value;
+            Array.from(productContainer.children).forEach(product => {
+                product.style.display = category === 'all' || product.dataset.category === category ? '' : 'none';
+            });
+        }
+
+        function sortProducts() {
+            const sortBy = sortSelect.value;
+            const products = Array.from(productContainer.children);
+            products.sort((a, b) => {
+                return sortBy === 'price'
+                    ? a.dataset.price - b.dataset.price
+                    : a.textContent.localeCompare(b.textContent);
+            });
+            productContainer.innerHTML = '';
+            products.forEach(product => productContainer.appendChild(product));
+        }
+
+        filterSelect.addEventListener('change', filterProducts);
+        sortSelect.addEventListener('change', sortProducts);
+    </script>
+</body>
+</html>
